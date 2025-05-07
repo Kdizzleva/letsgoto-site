@@ -17,52 +17,30 @@
       <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
     </div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#eat">Let’s Go To Eat</a>
-      <a href="#about">About</a>
+      <a href="index.html">Home</a>
+      <a href="eat.html">Let’s Go To Eat</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
-  <main>
-    <section id="home" class="glass-section">
-      <div class="hero-banner">
-        <img src="cover.jpg" alt="Let's Go To banner" />
-      </div>
-      <div class="hero-cta">
-        <a href="#eat" class="btn-primary">Explore Food</a>
-        <a href="#about" class="btn-outline">Meet Us</a>
-      </div>
-      <h2>Latest Adventures</h2>
-      <div class="section-underline"></div>
-      <div class="video-grid">
+  <main class="hero-landing">
+    <section class="hero-intro">
+      <h2>Welcome to Let's Go To...</h2>
+      <p>Food, fun, and theme park thrills — follow us on the journey!</p>
+    </section>
+
+    <section class="hero-cards">
+      <div class="hero-card video-card fade-slide-in" style="animation-delay: 0.5s;">
+        <h3>🎬 Latest Video</h3>
         <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allowfullscreen></iframe>
+        <a href="watch.html" class="btn-primary">Watch More</a>
       </div>
-    </section>
 
-    <section id="eat" class="glass-section">
-      <h2>Let’s Go To Eat 🍔</h2>
-      <div class="section-underline"></div>
-      <div id="blog-container">
-        <!-- Blog posts will be injected here -->
+      <div class="hero-card blog-card fade-slide-in" style="animation-delay: 0.8s;">
+        <h3>🍔 Recent Blog</h3>
+        <p><strong>Best Bites in LA:</strong> Tacos, ramen, and alien cupcakes?!</p>
+        <a href="eat.html" class="btn-outline">Read More</a>
       </div>
-      <script type="application/json" id="blog-data">
-      [
-        {
-          "title": "Best Bites in LA",
-          "content": "We tried tacos, fusion ramen, and even alien-themed cupcakes at Universal CityWalk!"
-        },
-        {
-          "title": "Hidden Gems at Busch Gardens",
-          "content": "Michael and I found some off-the-path snacks you can’t miss!"
-        }
-      ]
-      </script>
-    </section>
-
-    <section id="about" class="glass-section">
-      <h2>About Us</h2>
-      <div class="section-underline"></div>
-      <p>We're Kevin and Michael, a travel-obsessed duo bringing you food, fun, and fantastic adventures from coast to coast!</p>
     </section>
   </main>
 
