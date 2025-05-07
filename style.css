@@ -11,15 +11,47 @@ body {
   font-family: 'Orbitron', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-  background-image: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
-  background-size: 400% 400%;
-  animation: animatedBG 20s ease infinite;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
 }
 
-@keyframes animatedBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  z-index: -1;
+  animation: moveBlob 25s ease-in-out infinite alternate;
+}
+
+.blob1 {
+  background: var(--accent-pink);
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 20%;
+}
+
+.blob2 {
+  background: var(--accent-blue);
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 65%;
+}
+
+.blob3 {
+  background: #ffffff33;
+  width: 250px;
+  height: 250px;
+  top: 35%;
+  left: 80%;
+}
+
+@keyframes moveBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, 40px) scale(1.1); }
 }
 
 header {
@@ -30,6 +62,8 @@ header {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 20px var(--accent-blue);
+  z-index: 1;
+  position: relative;
 }
 
 nav a {
@@ -53,6 +87,41 @@ nav a:hover {
   box-shadow: 0 0 20px var(--accent-pink);
 }
 
+.hero-cta {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.btn-primary, .btn-outline {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 10px;
+}
+
+.btn-primary {
+  background: var(--accent-pink);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-blue);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-blue);
+  border: 2px solid var(--accent-blue);
+}
+
+.btn-outline:hover {
+  background: var(--accent-blue);
+  color: black;
+}
+
 .glass-section {
   margin: 2rem;
   padding: 2rem;
@@ -60,6 +129,17 @@ nav a:hover {
   background: var(--glass);
   backdrop-filter: blur(12px);
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.section-underline {
+  height: 4px;
+  width: 80px;
+  margin: 0.5rem 0 1.5rem;
+  background: linear-gradient(to right, var(--accent-pink), var(--accent-blue));
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--accent-pink), 0 0 20px var(--accent-blue);
 }
 
 .video-grid {
@@ -109,6 +189,8 @@ footer {
   background: var(--glass);
   backdrop-filter: blur(10px);
   color: var(--text-color);
+  position: relative;
+  z-index: 1;
 }
 
 .socials a {
