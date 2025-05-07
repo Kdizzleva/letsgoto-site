@@ -1,46 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Homepage</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>My Website</h1>
-    <nav>
-      <a href="#videos">Videos</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #ffffff;
+  --accent-pink: #ff66d9;
+  --accent-blue: #00ffe7;
+  --glass: rgba(255, 255, 255, 0.05);
+}
 
-  <section id="videos" class="glass-section video-grid">
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/oHg5SJYRHA0" allowfullscreen></iframe>
-  </section>
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  background-image: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+  background-size: 400% 400%;
+  animation: animatedBG 20s ease infinite;
+}
 
-  <section id="blog" class="glass-section">
-    <div class="blog-card">
-      <h3>Blog Post 1</h3>
-      <p>This is a summary of the first blog post.</p>
-      <button>Read More</button>
-    </div>
-    <div class="blog-card">
-      <h3>Blog Post 2</h3>
-      <p>This is a summary of the second blog post.</p>
-      <button>Read More</button>
-    </div>
-  </section>
+@keyframes animatedBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  <footer>
-    <div class="socials">
-      <a href="#">Twitter</a>
-      <a href="#">Facebook</a>
-      <a href="#">Instagram</a>
-    </div>
-    &copy; 2024 My Website
-  </footer>
-</body>
-</html>
+header {
+  background-color: var(--glass);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 20px var(--accent-blue);
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent-pink);
+}
+
+.hero-banner img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid var(--accent-blue);
+  box-shadow: 0 0 20px var(--accent-pink);
+}
+
+.glass-section {
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 20px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 12px var(--accent-pink);
+}
+
+.blog-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px var(--accent-blue);
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.expand-btn {
+  background: var(--accent-pink);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.expand-btn:hover {
+  background: var(--accent-blue);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  color: var(--text-color);
+}
+
+.socials a {
+  margin: 0 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.socials a:hover {
+  color: var(--accent-blue);
+}
