@@ -1,65 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let’s Go To Eat</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
+<script>
+const blogData = {
+  virginia: [
+    {
+      title: "Epic Nacho Mountain",
+      content: "Kevin and Michael took on the tallest nacho tower in Richmond.",
+      link: "blog/epic-nacho-mountain.html"
+    }
+  ],
+  themeParks: [
+    {
+      title: "Busch Gardens Foodie Finds",
+      content: "Top snacks from bratwursts to mystery churros.",
+      link: "blog/busch-gardens-foodie-finds.html"
+    }
+  ],
+  abroad: [
+    {
+      title: "The Glow-in-the-Dark Donuts",
+      content: "Neon rave diner donuts in Tokyo’s pop-up food alley.",
+      link: "blog/glow-donuts-abroad.html"
+    }
+  ]
+};
 
-  <header>
-    <div class="site-title">
-      <h1><span>Let's</span> <span>Go</span> <span>To Eat</span></h1>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="watch.html">Watch</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+const blogContainer = document.getElementById('blog-container');
 
-  <main class="glass-section">
-    <h2>Latest Food Finds</h2>
-    <div class="section-underline"></div>
-    <div id="blog-container"></div>
+function renderCategory(categoryName, posts) {
+  const section = document.createElement('section');
+  section.classList.add('blog-category');
 
-    <!--
-    To add more blogs:
-    1. Copy the format inside the array below.
-    2. Add new objects with "title" and "content".
-    -->
+  const heading = document.createElement('h3');
+  heading.textContent = categoryName;
+  section.appendChild(heading);
 
-    <script type="application/json" id="blog-data">
-    [
-      {
-        "title": "Epic Nacho Mountain",
-        "content": "Kevin and Michael took on the tallest nacho tower we've ever seen — and yes, there was queso everywhere."
-      },
-      {
-        "title": "The Glow-in-the-Dark Donuts",
-        "content": "Late night eats took a turn for the neon when we found these UV-reactive treats at a pop-up rave diner!"
-      },
-      {
-        "title": "Busch Gardens Foodie Finds",
-        "content": "From bratwursts in Oktoberfest to mystery churros, we rated the top park snacks — and one nearly took us out!"
-      }
-    ]
-    </script>
-  </main>
+  posts.forEach(post => {
+    const card = document.createElement('div');
+    card.classList.add('blog-card');
+    card.innerHTML = `
+      <h4>${post.title}</h4>
+      <p>${post.content}</p>
+      <a href="${post.link}" class="expand-btn">Read More</a>
+    `;
+    section.appendChild(card);
+  });
 
-  <footer>
-    <p>© 2025 Let's Go To...</p>
-    <div class="socials">
-      <a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a class="instagram-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-    </div>
-  </footer>
+  blogContainer.appendChild(section);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+renderCategory("Virginia", blogData.virginia);
+renderCategory("Theme Parks", blogData.themeParks);
+renderCategory("Abroad", blogData.abroad);
+</script>
