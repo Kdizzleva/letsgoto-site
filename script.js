@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load blog posts dynamically from Sheet.best if on eat.html
   if (window.location.pathname.includes("eat")) {
     const blogContainer = document.getElementById("blog-container");
+    if (!blogContainer) return;
     const today = new Date();
 
     blogContainer.innerHTML = "<p class='loading'>Loading posts...</p>";
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <h4>${post.Title}</h4>
               <p>${post.Summary}</p>
               <p><strong>${post.Rating}</strong></p>
-              <a href="${post["Blog URL"]}" class="expand-btn">Read More</a>
+              <a href="post.html?id=${encodeURIComponent(post.Title)}" class="expand-btn">Read More</a>
             `;
             section.appendChild(card);
           });
