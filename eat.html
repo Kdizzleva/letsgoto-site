@@ -21,6 +21,7 @@
       <a href="watch.html">Watch</a>
       <a href="about.html">About</a>
     </nav>
+    <button id="theme-toggle" class="theme-toggle">🌙 Light Mode</button>
   </header>
 
   <main class="glass-section">
@@ -85,7 +86,7 @@
               <h4>${post.Title}</h4>
               <p>${post.Summary}</p>
               <p><strong>${post.Rating}</strong></p>
-              <a href="${post["Blog URL"]}" class="expand-btn">Read More</a>
+              <a href="post.html?id=${encodeURIComponent(post.Title)}" class="expand-btn">Read More</a>
             `;
             section.appendChild(card);
           });
@@ -104,6 +105,22 @@
     }
 
     document.addEventListener("DOMContentLoaded", loadBlogPosts);
+  </script>
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      toggleBtn.textContent = '🌑 Dark Mode';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
+      toggleBtn.textContent = mode === 'light' ? '🌑 Dark Mode' : '🌙 Light Mode';
+      localStorage.setItem('theme', mode);
+    });
   </script>
 </body>
 </html>
