@@ -87,6 +87,19 @@
         width: 100%;
       }
     }
+
+    .hero-cards-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .hero-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -111,41 +124,43 @@
       <p>Food, fun, and theme park thrills — follow us on the journey!</p>
     </section>
 
-    <section class="hero-cards">
-      <!-- Most Recent Video -->
-      <div class="hero-card video-card fade-slide-in glass-section" style="animation-delay: 0.3s;">
-        <h3>🎬 Most Recent Video</h3>
-        <div class="responsive-video">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allowfullscreen></iframe>
+    <div class="hero-cards-wrapper">
+      <section class="hero-cards">
+        <!-- Most Recent Video -->
+        <div class="hero-card video-card fade-slide-in glass-section">
+          <h3>🎬 Most Recent Video</h3>
+          <div class="responsive-video">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allowfullscreen></iframe>
+          </div>
+          <a href="watch.html" class="btn-primary">Watch More</a>
         </div>
-        <a href="watch.html" class="btn-primary">Watch More</a>
-      </div>
 
-      <!-- Most Recent Blog Post -->
-      <div class="hero-card blog-card fade-slide-in glass-section" style="animation-delay: 0.6s;">
-        <h3>🍔 Latest Blog</h3>
-        <img src="https://via.placeholder.com/400x200?text=Latest+Blog" alt="Latest Blog" class="blog-image" />
-        <p><strong>Latest Dish Reviewed:</strong> Epic Nacho Mountain — Virginia’s crunchiest tower of queso!</p>
-        <a href="post.html?id=Epic%20Nacho%20Mountain" class="btn-outline">Read More</a>
-      </div>
-
-      <!-- Featured 5-Star Blog -->
-      <div class="hero-card blog-card fade-slide-in glass-section" style="animation-delay: 0.9s;">
-        <h3>⭐️ 5-Star Pick</h3>
-        <img src="https://via.placeholder.com/400x200?text=Top+Rated+Spot" alt="Top Rated Blog" class="blog-image" />
-        <p><strong>Kevin’s Favorite:</strong> Tokyo Turkey Legs — the juiciest thing outside EPCOT. 5/5!</p>
-        <a href="post.html?id=Tokyo%20Turkey%20Legs" class="btn-outline">Read More</a>
-      </div>
-
-      <!-- Bonus Playlist Preview -->
-      <div class="hero-card video-card fade-slide-in glass-section" style="animation-delay: 1.2s;">
-        <h3>📺 Theme Park Playlist</h3>
-        <div class="responsive-video">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" allowfullscreen></iframe>
+        <!-- Most Recent Blog Post -->
+        <div class="hero-card blog-card fade-slide-in glass-section">
+          <h3>🍔 Latest Blog</h3>
+          <img src="https://via.placeholder.com/400x200?text=Latest+Blog" alt="Latest Blog" class="blog-image" />
+          <p><strong>Latest Dish Reviewed:</strong> Epic Nacho Mountain — Virginia’s crunchiest tower of queso!</p>
+          <a href="post.html?id=Epic%20Nacho%20Mountain" class="btn-outline">Read More</a>
         </div>
-        <a href="https://www.youtube.com/playlist?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" class="btn-outline" target="_blank">Watch the Playlist</a>
-      </div>
-    </section>
+
+        <!-- Featured 5-Star Blog -->
+        <div class="hero-card blog-card fade-slide-in glass-section">
+          <h3>⭐️ 5-Star Pick</h3>
+          <img src="https://via.placeholder.com/400x200?text=Top+Rated+Spot" alt="Top Rated Blog" class="blog-image" />
+          <p><strong>Kevin’s Favorite:</strong> Tokyo Turkey Legs — the juiciest thing outside EPCOT. 5/5!</p>
+          <a href="post.html?id=Tokyo%20Turkey%20Legs" class="btn-outline">Read More</a>
+        </div>
+
+        <!-- Bonus Playlist Preview -->
+        <div class="hero-card video-card fade-slide-in glass-section">
+          <h3>🎢 Theme Park Playlist</h3>
+          <div class="responsive-video">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" allowfullscreen></iframe>
+          </div>
+          <a href="https://www.youtube.com/playlist?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" class="btn-outline" target="_blank">Watch the Playlist</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
