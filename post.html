@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let’s Go To: Blog Post</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <header>
+    <div class="site-title">
+      <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="eat.html">Let’s Go To Eat</a>
+      <a href="watch.html">Watch</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle">🌙 Light Mode</button>
+  </header>
+
+  <main class="glass-section">
+    <div id="post-container">
+      <p class="loading">Loading post...</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Let's Go To...</p>
+    <div class="socials">
+      <a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a class="instagram-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </footer>
+
+  <script>
+    const container = document.getElementById('post-container');
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id) {
+      container.innerHTML = "<p class='loading'>Post ID not found.</p>";
+    } else {
+      fetch("https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a")
+        .then(res => res.json())
+        .then(posts => {
+          const post = posts.find(p => p.Title.trim().toLowerCase() === decodeURIComponent(id).trim().toLowerCase());
+
+          if (!post) {
+            container.innerHTML = "<p class='loading'>Post not found.</p>";
+            return;
+          }
+
+          container.innerHTML = `
+            <img src="${post["Image URL"]}" alt="${post.Title}" class="blog-hero" />
+            <div class="blog-content">
+              <h2>${post.Title}</h2>
+              <p><strong>Rating:</strong> ${post.Rating}</p>
+              <p>${post.Summary}</p>
+              <p style="opacity: 0.6;">(Full post content can go here if extended writing is included in your sheet later.)</p>
+              <a href="eat.html" class="back-link">← Back to Eat Page</a>
+            </div>
+          `;
+        })
+        .catch(err => {
+          console.error(err);
+          container.innerHTML = "<p class='loading'>Something went wrong loading this post.</p>";
+        });
+    }
+  </script>
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      toggleBtn.textContent = '🌑 Dark Mode';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
+      toggleBtn.textContent = mode === 'light' ? '🌑 Dark Mode' : '🌙 Light Mode';
+      localStorage.setItem('theme', mode);
+    });
+  </script>
+</body>
+</html>
