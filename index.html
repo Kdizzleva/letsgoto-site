@@ -7,44 +7,84 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @media (max-width: 768px) {
-      .hero-cards {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .site-header {
-        background-color: rgba(0,0,0,0.5);
-        padding: 1rem;
-        text-align: center;
-      }
-
-      .site-header h1 {
-        font-size: 1.5rem;
-        color: white;
-        text-shadow: 0 0 6px var(--accent-pink), 0 0 12px var(--accent-blue);
-      }
-
-      .site-header nav {
-        margin-top: 0.5rem;
-      }
-
-      .site-header nav a {
-        margin: 0 0.5rem;
-        color: var(--accent-blue);
-      }
+    :root {
+      --bg-color: #0a0a0a;
+      --text-color: #ffffff;
+      --accent-pink: #ff00d4;
+      --accent-blue: #00f0ff;
+      --glass: rgba(255, 255, 255, 0.05);
+      --font-main: 'Orbitron', sans-serif;
     }
 
-    @media (min-width: 769px) {
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .site-header {
+      backdrop-filter: blur(10px);
+      background-color: rgba(10, 10, 10, 0.85);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 0 10px var(--accent-blue);
+    }
+
+    .site-header h1 {
+      font-size: 2.5rem;
+      color: var(--text-color);
+      text-shadow: 0 0 10px var(--accent-pink), 0 0 18px var(--accent-blue);
+      margin: 0;
+      text-align: center;
+    }
+
+    .site-header nav {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .site-header nav a {
+      color: var(--accent-blue);
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .site-header nav a:hover {
+      background: var(--accent-pink);
+      color: #fff;
+    }
+
+    .hero-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
       .site-header h1 {
-        font-size: 2.5rem;
+        font-size: 1.75rem;
       }
 
       .hero-cards {
-        display: flex;
-        justify-content: space-between;
-        gap: 2rem;
+        flex-direction: column;
+        padding: 0 1rem;
+      }
+
+      .hero-card {
+        width: 100%;
       }
     }
   </style>
