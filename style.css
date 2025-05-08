@@ -1,3 +1,22 @@
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #ffffff;
+  --accent-pink: #ff00d4;
+  --accent-blue: #00f0ff;
+  --accent-yellow: #fff700;
+  --glass: rgba(255, 255, 255, 0.05);
+  --font-main: 'Orbitron', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
 .blog-image {
   width: 100%;
   height: auto;
@@ -18,7 +37,7 @@
   font-size: 1.75rem;
   margin-bottom: 1.25rem;
   color: var(--accent-pink);
-  text-shadow: 0 0 5px var(--accent-blue);
+  text-shadow: 0 0 5px var(--accent-pink), 0 0 15px var(--accent-blue);
 }
 
 .loading {
@@ -45,7 +64,7 @@
 
 .blog-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px var(--accent-blue);
+  box-shadow: 0 0 20px var(--accent-pink), 0 0 35px var(--accent-blue);
 }
 
 .expand-btn {
@@ -103,7 +122,7 @@
   color: var(--accent-pink);
   font-size: 2rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 7px var(--accent-blue);
+  text-shadow: 0 0 5px var(--accent-pink), 0 0 15px var(--accent-blue);
 }
 
 .blog-content p {
