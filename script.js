@@ -15,24 +15,54 @@ document.head.appendChild(style);
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Let’s Go To... site loaded!");
 
-  // Load blog posts if on eat.html
-  const blogDataRaw = document.getElementById("blog-data");
-  const blogContainer = document.getElementById("blog-container");
+  // Load blog posts dynamically from Sheet.best if on eat.html
+  if (window.location.pathname.includes("eat")) {
+    const blogContainer = document.getElementById("blog-container");
+    const today = new Date();
 
-  if (window.location.pathname.includes("eat") && blogDataRaw && blogContainer) {
-    try {
-      const blogData = JSON.parse(blogDataRaw.textContent);
-      blogData.forEach((post, i) => {
-        const el = document.createElement("div");
-        el.className = "blog-card";
-        el.style.animation = `fadeInUp 0.6s ease forwards`;
-        el.style.animationDelay = `${i * 0.15}s`;
-        el.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
-        blogContainer.appendChild(el);
+    fetch("https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a")
+      .then(res => res.json())
+      .then(posts => {
+        const categories = {
+          Virginia: [],
+          "Theme Parks": [],
+          Abroad: []
+        };
+
+        posts.forEach(post => {
+          const postDate = new Date(post.Date);
+          if (postDate <= today && categories[post.Category]) {
+            categories[post.Category].push(post);
+          }
+        });
+
+        Object.entries(categories).forEach(([name, entries]) => {
+          if (entries.length === 0) return;
+
+          const section = document.createElement("section");
+          section.className = "blog-category";
+          section.innerHTML = `<h3>${name}</h3>`;
+
+          entries.forEach(post => {
+            const card = document.createElement("div");
+            card.className = "blog-card";
+            card.innerHTML = `
+              <img src="${post["Image URL"]}" alt="${post.Title}" class="blog-image" />
+              <h4>${post.Title}</h4>
+              <p>${post.Summary}</p>
+              <p><strong>${post.Rating}</strong></p>
+              <a href="${post["Blog URL"]}" class="expand-btn">Read More</a>
+            `;
+            section.appendChild(card);
+          });
+
+          blogContainer.appendChild(section);
+        });
+      })
+      .catch(err => {
+        console.error("Error fetching blog posts:", err);
+        blogContainer.innerHTML = "<p style='color: white;'>Failed to load posts.</p>";
       });
-    } catch (err) {
-      console.error("Failed to parse blog data:", err);
-    }
   }
 
   // Blog read more button interaction
