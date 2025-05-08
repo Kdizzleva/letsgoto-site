@@ -329,3 +329,15 @@ img {
 .neon-flicker {
   animation: neon-flicker 3s infinite;
 }
+
+/* Additional responsive layout */
+@media (max-width: 600px) {
+  .blog-card {
+    flex: 1 1 100%;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
