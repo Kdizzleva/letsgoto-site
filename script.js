@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const blogContainer = document.getElementById("blog-container");
     const today = new Date();
 
+    blogContainer.innerHTML = "<p class='loading'>Loading posts...</p>";
+
     fetch("https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a")
       .then(res => res.json())
       .then(posts => {
@@ -36,6 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
+        Object.keys(categories).forEach(key => {
+          categories[key].sort((a, b) => new Date(b.Date) - new Date(a.Date));
+        });
+        blogContainer.innerHTML = "";
+
         Object.entries(categories).forEach(([name, entries]) => {
           if (entries.length === 0) return;
 
@@ -47,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "blog-card";
             card.innerHTML = `
-              <img src="${post["Image URL"]}" alt="${post.Title}" class="blog-image" />
+              <img src="${post["Image URL"] || 'images/default.jpg'}" alt="${post.Title}" class="blog-image" />
               <h4>${post.Title}</h4>
               <p>${post.Summary}</p>
               <p><strong>${post.Rating}</strong></p>
@@ -64,13 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
         blogContainer.innerHTML = "<p style='color: white;'>Failed to load posts.</p>";
       });
   }
-
-  // Blog read more button interaction
-  document.addEventListener("click", (e) => {
-    if (e.target.matches(".expand-btn")) {
-      alert("More blog details coming soon!");
-    }
-  });
 
   // Smooth scroll for internal anchor links
   document.querySelectorAll("a[href^='#']").forEach(anchor => {
