@@ -1,52 +1,65 @@
-<script>
-async function loadBlogPosts() {
-  const response = await fetch("https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a");
-  const posts = await response.json();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let’s Go To Eat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="blog-container"></div>
 
-  const blogContainer = document.getElementById("blog-container");
-  const today = new Date();
+  <script>
+    async function loadBlogPosts() {
+      const response = await fetch("https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a");
+      const posts = await response.json();
 
-  const categories = {
-    Virginia: [],
-    "Theme Parks": [],
-    Abroad: []
-  };
+      const blogContainer = document.getElementById("blog-container");
+      const today = new Date();
 
-  posts.forEach(post => {
-    const postDate = new Date(post.Date);
-    if (postDate <= today) {
-      if (categories[post.Category]) {
-        categories[post.Category].push(post);
-      }
+      const categories = {
+        Virginia: [],
+        "Theme Parks": [],
+        Abroad: []
+      };
+
+      posts.forEach(post => {
+        const postDate = new Date(post.Date);
+        if (postDate <= today) {
+          if (categories[post.Category]) {
+            categories[post.Category].push(post);
+          }
+        }
+      });
+
+      Object.entries(categories).forEach(([categoryName, entries]) => {
+        if (entries.length === 0) return;
+
+        const section = document.createElement("section");
+        section.className = "blog-category";
+
+        const heading = document.createElement("h3");
+        heading.textContent = categoryName;
+        section.appendChild(heading);
+
+        entries.forEach(post => {
+          const card = document.createElement("div");
+          card.className = "blog-card";
+          card.innerHTML = `
+            <img src="${post["Image URL"]}" alt="${post.Title}" class="blog-image" />
+            <h4>${post.Title}</h4>
+            <p>${post.Summary}</p>
+            <p><strong>${post.Rating}</strong></p>
+            <a href="${post["Blog URL"]}" class="expand-btn">Read More</a>
+          `;
+          section.appendChild(card);
+        });
+
+        blogContainer.appendChild(section);
+      });
     }
-  });
 
-  Object.entries(categories).forEach(([categoryName, entries]) => {
-    if (entries.length === 0) return;
-
-    const section = document.createElement("section");
-    section.className = "blog-category";
-
-    const heading = document.createElement("h3");
-    heading.textContent = categoryName;
-    section.appendChild(heading);
-
-    entries.forEach(post => {
-      const card = document.createElement("div");
-      card.className = "blog-card";
-      card.innerHTML = `
-        <img src="${post["Image URL"]}" alt="${post.Title}" class="blog-image" />
-        <h4>${post.Title}</h4>
-        <p>${post.Summary}</p>
-        <p><strong>${post.Rating}</strong></p>
-        <a href="${post["Blog URL"]}" class="expand-btn">Read More</a>
-      `;
-      section.appendChild(card);
-    });
-
-    blogContainer.appendChild(section);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", loadBlogPosts);
-</script>
+    document.addEventListener("DOMContentLoaded", loadBlogPosts);
+  </script>
+</body>
+</html>
