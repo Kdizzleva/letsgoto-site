@@ -78,3 +78,110 @@
     font-size: 0.9rem;
   }
 }
+
+/* Epic Nacho Mountain Blog Post Styles */
+.blog-hero {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 12px var(--accent-blue);
+}
+
+.blog-content {
+  background: var(--glass);
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  color: var(--text-color);
+  line-height: 1.7;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+}
+
+.blog-content h2 {
+  color: var(--accent-pink);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 7px var(--accent-blue);
+}
+
+.blog-content p {
+  margin-bottom: 1.25rem;
+}
+
+.back-link {
+  margin-top: 2rem;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  background: var(--accent-blue);
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 0 8px var(--accent-pink), 0 0 2px var(--accent-blue);
+  letter-spacing: 0.06em;
+}
+
+.back-link:hover {
+  background: var(--accent-pink);
+  color: #fff;
+  box-shadow: 0 0 16px var(--accent-pink), 0 0 8px var(--accent-blue);
+}
+
+/* Floating blobs for neon glassmorphism */
+.blob {
+  position: fixed;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(32px);
+  pointer-events: none;
+  animation: floatBlob 18s ease-in-out infinite alternate;
+}
+.blob1 {
+  top: 5%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 60% 40%, var(--accent-blue) 60%, transparent 100%);
+  animation-delay: 0s;
+}
+.blob2 {
+  top: 70%;
+  left: 70%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle at 30% 70%, var(--accent-pink) 60%, transparent 100%);
+  animation-delay: 6s;
+}
+.blob3 {
+  top: 40%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at 80% 20%, var(--accent-yellow, #fff700) 65%, transparent 100%);
+  animation-delay: 12s;
+}
+@keyframes floatBlob {
+  0% { transform: scale(1) translateY(0px) rotate(0deg);}
+  50% { transform: scale(1.1) translateY(30px) rotate(15deg);}
+  100% { transform: scale(1) translateY(-15px) rotate(-8deg);}
+}
+
+@media (max-width: 700px) {
+  .blog-hero {
+    max-height: 220px;
+    border-radius: 10px;
+  }
+  .blog-content {
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  .blob1, .blob2, .blob3 {
+    width: 120px !important;
+    height: 120px !important;
+    filter: blur(14px);
+  }
+}
