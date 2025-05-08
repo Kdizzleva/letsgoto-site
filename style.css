@@ -101,16 +101,17 @@ body {
 /* Epic Nacho Mountain Blog Post Styles */
 .blog-hero {
   width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 16px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 12px var(--accent-blue);
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 8px var(--accent-blue);
 }
 
 .blog-content {
   background: var(--glass);
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 16px;
   backdrop-filter: blur(10px);
   color: var(--text-color);
