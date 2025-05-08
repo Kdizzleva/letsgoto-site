@@ -6,13 +6,55 @@
   <title>Let's Go To...</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    @media (max-width: 768px) {
+      .hero-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .site-header {
+        background-color: rgba(0,0,0,0.5);
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .site-header h1 {
+        font-size: 1.5rem;
+        color: white;
+        text-shadow: 0 0 6px var(--accent-pink), 0 0 12px var(--accent-blue);
+      }
+
+      .site-header nav {
+        margin-top: 0.5rem;
+      }
+
+      .site-header nav a {
+        margin: 0 0.5rem;
+        color: var(--accent-blue);
+      }
+    }
+
+    @media (min-width: 769px) {
+      .site-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-cards {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
+  <div class="blob blob1" style="top: -100px; left: -60px;"></div>
+  <div class="blob blob2" style="top: 60%; right: -80px;"></div>
+  <div class="blob blob3" style="bottom: -120px; left: 20%;"></div>
 
-  <header>
+  <header class="site-header">
     <div class="site-title">
       <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
     </div>
