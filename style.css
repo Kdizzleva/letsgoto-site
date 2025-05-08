@@ -205,3 +205,57 @@ body {
     filter: blur(14px);
   }
 }
+
+/* Light mode styles */
+body.light-mode {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-pink: #e60073;
+  --accent-blue: #007acc;
+  --accent-yellow: #ffcc00;
+  --glass: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .blog-content {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  color: var(--text-color);
+}
+
+body.light-mode .blog-content h2 {
+  text-shadow: none;
+}
+
+body.light-mode .blog-card {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .expand-btn {
+  background: var(--accent-blue);
+  color: white;
+}
+
+body.light-mode .expand-btn:hover {
+  background: var(--accent-pink);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent-pink);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 0 10px var(--accent-blue);
+}
+
+body.light-mode .theme-toggle {
+  background: var(--accent-blue);
+  color: white;
+  box-shadow: 0 0 10px var(--accent-pink);
+}
