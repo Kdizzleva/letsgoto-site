@@ -35,44 +35,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 // Blog loading on eat.html
-  if (!window.location.pathname.includes('eat')) return;
-  const container = document.getElementById('blog-container');
-  if (!container) return;
-  container.innerHTML = '<p class="loading">Loading posts...</p>';
-  fetch('https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a')
-    .then(r => r.json())
-    .then(posts => {
-      const today = new Date();
-      const categories = { Virginia: [], 'Theme Parks': [], Abroad: [] };
-      posts.forEach(p => {
-        const d = new Date(p.Date);
-        if (d <= today && categories[p.Category]) categories[p.Category].push(p);
-      });
-      container.innerHTML = '';
-      Object.entries(categories).forEach(([cat, arr]) => {
-        if (!arr.length) return;
-        // sort newest first
-        arr.sort((a,b) => new Date(b.Date) - new Date(a.Date));
-        const sec = document.createElement('section'); sec.className = 'blog-category';
-        const h = document.createElement('h3'); h.textContent = cat; sec.appendChild(h);
-        arr.forEach(post => {
-          const card = document.createElement('div'); card.className = 'blog-card';
-          card.innerHTML = `
-            <img src="${post['Image URL']}" alt="${post.Title}" class="blog-image" loading="lazy" />
-            <h4>${post.Title}</h4>
-            <p>${post.Summary}</p>
-            <p><strong>${post.Rating}</strong></p>
-            <a href="post.html?id=${encodeURIComponent(post.Title)}" class="expand-btn">Read More</a>
-          `;
-          sec.appendChild(card);
+  if (window.location.pathname.includes('eat')) {
+    const container = document.getElementById('blog-container');
+    if (!container) return;
+    container.innerHTML = '<p class="loading">Loading posts...</p>';
+    fetch('https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a')
+      .then(r => r.json())
+      .then(posts => {
+        const today = new Date();
+        const categories = { Virginia: [], 'Theme Parks': [], Abroad: [] };
+        posts.forEach(p => {
+          const d = new Date(p.Date);
+          if (d <= today && categories[p.Category]) categories[p.Category].push(p);
         });
-        container.appendChild(sec);
-      });
-      if (!container.querySelector('.blog-category')) {
-        container.innerHTML = '<p class="loading">No posts available.</p>';
-      }
-    })
-    .catch(err => { console.error(err); container.innerHTML = '<p class="loading">Failed to load posts.</p>'; });
+        container.innerHTML = '';
+        Object.entries(categories).forEach(([cat, arr]) => {
+          if (!arr.length) return;
+          // sort newest first
+          arr.sort((a,b) => new Date(b.Date) - new Date(a.Date));
+          const sec = document.createElement('section'); sec.className = 'blog-category';
+          const h = document.createElement('h3'); h.textContent = cat; sec.appendChild(h);
+          arr.forEach(post => {
+            const card = document.createElement('div'); card.className = 'blog-card';
+            card.innerHTML = `
+              <img src="${post['Image URL']}" alt="${post.Title}" class="blog-image" loading="lazy" />
+              <h4>${post.Title}</h4>
+              <p>${post.Summary}</p>
+              <p><strong>${post.Rating}</strong></p>
+              <a href="post.html?id=${encodeURIComponent(post.Title)}" class="expand-btn">Read More</a>
+            `;
+            sec.appendChild(card);
+          });
+          container.appendChild(sec);
+        });
+        if (!container.querySelector('.blog-category')) {
+          container.innerHTML = '<p class="loading">No posts available.</p>';
+        }
+      })
+      .catch(err => { console.error(err); container.innerHTML = '<p class="loading">Failed to load posts.</p>'; });
+  }
 
 // Dynamic post page (post.html)
 // Inline script in post.html handles fetching and rendering single post by URL id
