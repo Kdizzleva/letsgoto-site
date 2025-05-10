@@ -287,6 +287,29 @@ body.light-mode .theme-toggle {
   background: var(--accent-blue);
   box-shadow: 0 0 10px var(--accent-pink);
 }
+/* Light-mode header/nav overrides */
+body.light-mode .site-header {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+body.light-mode .site-header h1 {
+  color: var(--text-color);
+  text-shadow: 0 0 8px var(--accent-pink), 0 0 16px var(--accent-blue);
+}
+
+body.light-mode .site-header nav a {
+  color: var(--accent-blue);
+}
+
+body.light-mode .site-header nav a:hover {
+  background: var(--accent-pink);
+  color: #fff;
+}
+
+body.light-mode .theme-toggle {
+  background: var(--accent-blue);
+  color: #fff;
+}
 
 /* Responsive Breakpoints */
 @media (max-width: 600px) {
