@@ -11,6 +11,8 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Auth0 SPA SDK -->
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.29/auth0-spa-js.production.js"></script>
   <title>Let's Go To...</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -23,6 +25,8 @@
     <div class="site-title"><h1><span>Let's</span> <span>Go</span> <span>To...</span></h1></div>
     <nav><a href="index.html">Home</a><a href="eat.html">Let's Go To Eat</a><a href="watch.html">Watch</a><a href="about.html">About</a></nav>
     <button class="theme-toggle">🌙 Light Mode</button>
+    <button id="login-btn" class="btn-outline">Log In</button>
+    <button id="logout-btn" class="btn-outline" hidden>Log Out</button>
   </header>
 
   <main>
