@@ -6,157 +6,44 @@
   <title>Let's Go To...</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #0a0a0a;
-      --text-color: #ffffff;
-      --accent-pink: #ff00d4;
-      --accent-blue: #00f0ff;
-      --glass: rgba(255, 255, 255, 0.05);
-      --font-main: 'Orbitron', sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: var(--font-main);
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    .site-header {
-      backdrop-filter: blur(10px);
-      background-color: rgba(10, 10, 10, 0.85);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      box-shadow: 0 0 10px var(--accent-blue);
-    }
-
-    .site-header h1 {
-      font-size: 2.5rem;
-      color: var(--text-color);
-      text-shadow: 0 0 10px var(--accent-pink), 0 0 18px var(--accent-blue);
-      margin: 0;
-      text-align: center;
-    }
-
-    .site-header nav {
-      margin-top: 0.75rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .site-header nav a {
-      color: var(--accent-blue);
-      font-weight: bold;
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-    }
-
-    .site-header nav a:hover {
-      background: var(--accent-pink);
-      color: #fff;
-    }
-
-    .hero-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .site-header h1 {
-        font-size: 1.75rem;
-      }
-
-      .hero-cards {
-        flex-direction: column;
-        padding: 0 1rem;
-      }
-
-      .hero-card {
-        width: 100%;
-      }
-    }
-
-    .hero-cards-wrapper {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-
-    .hero-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-  </style>
 </head>
 <body>
-  <div class="blob blob1" style="top: -100px; left: -60px;"></div>
-  <div class="blob blob2" style="top: 60%; right: -80px;"></div>
-  <div class="blob blob3" style="bottom: -120px; left: 20%;"></div>
-
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
   <header class="site-header">
-    <div class="site-title">
-      <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="eat.html">Let’s Go To Eat</a>
-      <a href="about.html">About</a>
-    </nav>
+    <div class="site-title"><h1><span>Let's</span> <span>Go</span> <span>To...</span></h1></div>
+    <nav><a href="index.html">Home</a><a href="eat.html">Let's Go To Eat</a><a href="watch.html">Watch</a><a href="about.html">About</a></nav>
+    <button class="theme-toggle">🌙 Light Mode</button>
   </header>
 
-  <main class="hero-landing">
+  <main>
     <section class="hero-intro glass-section animated-intro">
-      <h2 class="neon-heading">Welcome to Let's Go To...</h2>
+      <h2>Welcome to Let's Go To...</h2>
       <p>Food, fun, and theme park thrills — follow us on the journey!</p>
     </section>
-
     <div class="hero-cards-wrapper">
       <section class="hero-cards">
-        <!-- Most Recent Video -->
-        <div class="hero-card video-card fade-slide-in glass-section">
+        <div class="hero-card video-card glass-section">
           <h3>🎬 Most Recent Video</h3>
-          <div class="responsive-video">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allowfullscreen></iframe>
-          </div>
+          <div class="responsive-video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allowfullscreen></iframe></div>
           <a href="watch.html" class="btn-primary">Watch More</a>
         </div>
-
-        <!-- Most Recent Blog Post -->
-        <div class="hero-card blog-card fade-slide-in glass-section">
+        <div class="hero-card blog-card glass-section">
           <h3>🍔 Latest Blog</h3>
-          <img src="https://via.placeholder.com/400x200?text=Latest+Blog" alt="Latest Blog" class="blog-image" />
+          <img src="images/epic-nacho-mountain.jpg" alt="Epic Nacho Mountain" class="blog-image" />
           <p><strong>Latest Dish Reviewed:</strong> Epic Nacho Mountain — Virginia’s crunchiest tower of queso!</p>
-          <a href="post.html?id=Epic%20Nacho%20Mountain" class="btn-outline">Read More</a>
+          <a href="post.html?id=Epic Nacho Mountain" class="btn-outline">Read More</a>
         </div>
-
-        <!-- Featured 5-Star Blog -->
-        <div class="hero-card blog-card fade-slide-in glass-section">
+        <div class="hero-card blog-card glass-section">
           <h3>⭐️ 5-Star Pick</h3>
-          <img src="https://via.placeholder.com/400x200?text=Top+Rated+Spot" alt="Top Rated Blog" class="blog-image" />
+          <img src="images/top-rated-spot.jpg" alt="Top Rated Blog" class="blog-image" />
           <p><strong>Kevin’s Favorite:</strong> Tokyo Turkey Legs — the juiciest thing outside EPCOT. 5/5!</p>
-          <a href="post.html?id=Tokyo%20Turkey%20Legs" class="btn-outline">Read More</a>
+          <a href="post.html?id=Tokyo Turkey Legs" class="btn-outline">Read More</a>
         </div>
-
-        <!-- Bonus Playlist Preview -->
-        <div class="hero-card video-card fade-slide-in glass-section">
+        <div class="hero-card video-card glass-section">
           <h3>🎢 Theme Park Playlist</h3>
-          <div class="responsive-video">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" allowfullscreen></iframe>
-          </div>
+          <div class="responsive-video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" allowfullscreen></iframe></div>
           <a href="https://www.youtube.com/playlist?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" class="btn-outline" target="_blank">Watch the Playlist</a>
         </div>
       </section>
@@ -165,12 +52,8 @@
 
   <footer>
     <p>© 2025 Let's Go To...</p>
-    <div class="socials">
-      <a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a class="instagram-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-    </div>
+    <div class="socials"><a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank">YouTube</a>  <a class="instagram-link" href="https://instagram.com" target="_blank">Instagram</a></div>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
