@@ -21,9 +21,17 @@
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
+
   <header class="site-header">
-    <div class="site-title"><h1><span>Let's</span> <span>Go</span> <span>To...</span></h1></div>
-    <nav><a href="index.html">Home</a><a href="eat.html">Let's Go To Eat</a><a href="watch.html">Watch</a><a href="about.html">About</a></nav>
+    <div class="site-title">
+      <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="eat.html">Let's Go To Eat</a>
+      <a href="watch.html">Watch</a>
+      <a href="about.html">About</a>
+    </nav>
     <button class="theme-toggle">🌙 Light Mode</button>
     <button id="login-btn" class="btn-outline">Log In</button>
     <button id="logout-btn" class="btn-outline" hidden>Log Out</button>
@@ -34,6 +42,7 @@
       <h2>Welcome to Let's Go To...</h2>
       <p>Food, fun, and theme park thrills — follow us on the journey!</p>
     </section>
+
     <section id="newsletter" class="glass-section hero-intro">
       <h2>Join Our Newsletter</h2>
       <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field">
@@ -46,34 +55,64 @@
         <p class="newsletter-confirmation" hidden>Thanks for subscribing!</p>
       </form>
     </section>
+
     <div class="hero-cards-wrapper">
       <section class="hero-cards">
         <div class="hero-card video-card glass-section">
           <h3>🎬 Most Recent Video</h3>
-          <div class="responsive-video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allowfullscreen></iframe></div>
+          <div class="responsive-video">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
           <a href="watch.html" class="btn-primary">Watch More</a>
         </div>
         <div class="hero-card blog-card glass-section">
           <h3>🍔 Latest Blog</h3>
-          <img src="images/epic-nacho-mountain.jpg" alt="Epic Nacho Mountain" class="blog-image" />
+          <img src="images/epic-nacho-mountain.jpg" alt="Epic Nacho Mountain" class="blog-image" loading="lazy" />
           <p><strong>Latest Dish Reviewed:</strong> Epic Nacho Mountain — Virginia’s crunchiest tower of queso!</p>
-          <a href="post.html?id=Epic Nacho Mountain" class="btn-outline">Read More</a>
+          <a href="post.html?id=Epic%20Nacho%20Mountain" class="btn-outline">Read More</a>
         </div>
         <div class="hero-card blog-card glass-section">
           <h3>⭐️ 5-Star Pick</h3>
-          <img src="images/top-rated-spot.jpg" alt="Top Rated Blog" class="blog-image" />
+          <img src="images/top-rated-spot.jpg" alt="Top Rated Blog" class="blog-image" loading="lazy" />
           <p><strong>Kevin’s Favorite:</strong> Tokyo Turkey Legs — the juiciest thing outside EPCOT. 5/5!</p>
-          <a href="post.html?id=Tokyo Turkey Legs" class="btn-outline">Read More</a>
+          <a href="post.html?id=Tokyo%20Turkey%20Legs" class="btn-outline">Read More</a>
         </div>
         <div class="hero-card video-card glass-section">
           <h3>🎢 Theme Park Playlist</h3>
-          <div class="responsive-video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" allowfullscreen></iframe></div>
+          <div class="responsive-video">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
           <a href="https://www.youtube.com/playlist?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" class="btn-outline" target="_blank">Watch the Playlist</a>
         </div>
       </section>
     </div>
   </main>
-  
+
+  <!-- Newsletter Exit-Intent Modal -->
+  <div id="newsletter-modal" class="modal-overlay">
+    <div class="modal-content glass-section">
+      <button id="modal-close" class="modal-close">×</button>
+      <h2>Wait! Join Our Newsletter</h2>
+      <form name="exit-newsletter" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="exit-newsletter" />
+        <p class="screen-reader-text">
+          <label>Don't fill out if human: <input name="bot-field" /></label>
+        </p>
+        <input type="email" name="email" placeholder="Your email address" required class="newsletter-input" />
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Slide-in Newsletter Banner -->
+  <div id="slide-banner" class="slide-banner">
+    <div class="slide-content">
+      <p>Enjoying our content? Join our newsletter for exclusive updates!</p>
+      <button id="slide-subscribe" class="btn-primary">Subscribe</button>
+      <button id="slide-close" class="slide-close">×</button>
+    </div>
+  </div>
+
   <footer>
     <section id="support" class="glass-section hero-intro">
       <h2>Support Us on Patreon</h2>
@@ -83,8 +122,15 @@
       <p>Your support keeps us exploring and creating—thank you! 🎉</p>
     </section>
     <p>© 2025 Let's Go To...</p>
-    <div class="socials"><a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank">YouTube</a>  <a class="instagram-link" href="https://instagram.com" target="_blank">Instagram</a></div>
+    <div class="socials">
+      <a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a class="instagram-link" href="https://www.instagram.com/letsgoto.yt" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a class="twitter-link" href="https://twitter.com/lg2yt" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a class="facebook-link" href="https://www.facebook.com/letsgoto.yt" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a class="tiktok-link" href="https://www.tiktok.com/@lg2yt" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
