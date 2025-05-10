@@ -1,7 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
 /* Global script for site */
 
 // Cursor / gyroscope interaction
-(function() {
   const bg = document.querySelector('.blob1');
   if (bg) {
     document.addEventListener('mousemove', e => {
@@ -18,10 +18,8 @@
       });
     });
   }
-})();
 
 // Theme toggle
-(function() {
   const btn = document.querySelectorAll('.theme-toggle');
   btn.forEach(toggleBtn => {
     const body = document.body;
@@ -35,10 +33,8 @@
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
   });
-})();
 
 // Blog loading on eat.html
-(function() {
   if (!window.location.pathname.includes('eat')) return;
   const container = document.getElementById('blog-container');
   if (!container) return;
@@ -77,7 +73,17 @@
       }
     })
     .catch(err => { console.error(err); container.innerHTML = '<p class="loading">Failed to load posts.</p>'; });
-})();
 
 // Dynamic post page (post.html)
 // Inline script in post.html handles fetching and rendering single post by URL id
+
+// Sticky mini-player on scroll
+  const videos = Array.from(document.querySelectorAll('.responsive-video'));
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    videos.forEach(video => {
+      const triggerPoint = video.offsetTop + video.offsetHeight;
+      video.classList.toggle('mini-player', scrollY > triggerPoint);
+    });
+  });
+});
