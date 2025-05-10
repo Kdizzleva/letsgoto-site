@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Our latest restaurant reviews from Virginia, theme parks, and abroad—complete with photos, ratings, and video highlights." />
   <title>Let's Go To Eat</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -11,19 +12,40 @@
   <div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div>
   <header class="site-header">
     <div class="site-title"><h1><span>Let's</span> <span>Go</span> <span>To Eat</span></h1></div>
-    <nav><a href="index.html">Home</a><a href="watch.html">Watch</a><a href="about.html">About</a></nav>
+    <nav aria-label="Main site navigation">
+      <a href="index.html">Home</a>
+      <a href="eat.html" class="active" aria-current="page">Let's Go To Eat</a>
+      <a href="watch.html">Watch</a>
+      <a href="about.html">About</a>
+    </nav>
     <button class="theme-toggle">🌙 Light Mode</button>
+    <button id="login-btn" class="btn-outline">Log In</button>
+    <button id="logout-btn" class="btn-outline" hidden>Log Out</button>
   </header>
   <main>
     <section class="hero-intro glass-section">
       <h2>Let's Go To Eat</h2>
       <div class="section-underline"></div>
-      <div id="blog-container"></div>
+      <div class="section-controls">
+        <input type="search" id="blog-search" placeholder="Search posts..." aria-label="Search blog posts" />
+        <div class="category-filters" role="tablist">
+          <button data-filter="All" class="filter-btn active" role="tab" aria-selected="true">All</button>
+          <button data-filter="Virginia" class="filter-btn" role="tab">Virginia</button>
+          <button data-filter="Theme Parks" class="filter-btn" role="tab">Theme Parks</button>
+          <button data-filter="Abroad" class="filter-btn" role="tab">Abroad</button>
+        </div>
+      </div>
+      <div id="blog-container">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
     </section>
   </main>
   <footer>
     <p>© 2025 Let's Go To...</p>
   </footer>
   <script src="script.js"></script>
+  <button id="back-to-top" class="back-to-top" hidden aria-label="Back to top">↑</button>
 </body>
 </html>

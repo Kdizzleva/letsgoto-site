@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let’s Go To About</title>
+  <title>Let’s Go To… – About Us</title>
+  <meta name="description" content="Kevin & Michael share immersive travel, food, and theme park adventures on Let's Go To... without breaking the bank." />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -16,11 +17,15 @@
     <div class="site-title">
       <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
     </div>
-    <nav>
+    <nav aria-label="Main site navigation">
       <a href="index.html">Home</a>
       <a href="eat.html">Let’s Go To Eat</a>
       <a href="watch.html">Watch</a>
+      <a href="about.html" class="active">About</a>
     </nav>
+    <button class="theme-toggle">🌙 Light Mode</button>
+    <button id="login-btn" class="btn-outline">Log In</button>
+    <button id="logout-btn" class="btn-outline" hidden>Log Out</button>
   </header>
 
   <main class="glass-section hero-intro">
@@ -30,17 +35,18 @@
     <p>We focus on big experiences with small budgets, blending curiosity with creativity to uncover the most exciting eats and unforgettable rides across the country.</p>
     <p>Thanks for joining our journey. Let’s go to… anywhere the fun takes us!</p>
     <div class="about-profile">
-      <img src="images/kevin-michael.jpg" alt="Kevin and Michael" class="profile-img"/>
+      <img src="images/kevin-michael.jpg" alt="Kevin and Michael" class="profile-img" loading="lazy"/>
       <p class="caption">Meet your guides: Kevin & Michael!</p>
     </div>
   </main>
-  <section id="support" class="glass-section hero-intro">
+  <aside id="support" class="glass-section hero-intro" role="complementary" aria-label="Support Us on Patreon">
     <h2>Support Us on Patreon</h2>
+    <div class="section-underline"></div>
     <a href="https://patreon.com/user?u=29344216&utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank">
       <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron" style="max-width:200px;"/>
     </a>
     <p>Your support keeps us exploring and creating—thank you! 🎉</p>
-  </section>
+  </aside>
 
   <footer>
     <p>© 2025 Let's Go To...</p>
