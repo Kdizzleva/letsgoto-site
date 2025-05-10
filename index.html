@@ -22,6 +22,18 @@
       <h2>Welcome to Let's Go To...</h2>
       <p>Food, fun, and theme park thrills — follow us on the journey!</p>
     </section>
+    <section id="newsletter" class="glass-section hero-intro">
+      <h2>Join Our Newsletter</h2>
+      <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p class="screen-reader-text">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+        <input type="email" name="email" placeholder="Your email address" required class="newsletter-input" />
+        <button type="submit" class="btn-primary">Subscribe</button>
+        <p class="newsletter-confirmation" hidden>Thanks for subscribing!</p>
+      </form>
+    </section>
     <div class="hero-cards-wrapper">
       <section class="hero-cards">
         <div class="hero-card video-card glass-section">
@@ -51,6 +63,13 @@
   </main>
 
   <footer>
+    <section id="support" class="glass-section hero-intro">
+      <h2>Support Us on Patreon</h2>
+      <a href="https://www.patreon.com/YourPage" target="_blank">
+        <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron" style="max-width:200px;"/>
+      </a>
+      <p>Your support keeps us exploring and creating—thank you! 🎉</p>
+    </section>
     <p>© 2025 Let's Go To...</p>
     <div class="socials"><a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank">YouTube</a>  <a class="instagram-link" href="https://instagram.com" target="_blank">Instagram</a></div>
   </footer>

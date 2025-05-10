@@ -29,6 +29,19 @@ body {
   text-align: center;
 }
 
+/* Newsletter Signup Form */
+#newsletter {
+  max-width: 600px;
+  margin: 3rem auto;
+  text-align: center;
+}
+
+#newsletter h2 {
+  margin-bottom: 1rem;
+  color: var(--accent-pink);
+  text-shadow: 0 0 6px var(--accent-pink), 0 0 12px var(--accent-blue);
+}
+
 .site-header h1 {
   font-size: 2.5rem;
   margin: 0;
@@ -373,7 +386,6 @@ body.light-mode .theme-toggle {
   overflow: hidden;
   position: relative;
   box-shadow: 0 0 10px rgba(0,255,255,0.1);
-  transition: transform 0.3s ease, box-shadow 0 0  ,ease; /* corrected below */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -414,4 +426,57 @@ body.light-mode .theme-toggle {
 
 .video-card a:hover {
   text-decoration: underline;
+}
+
+/* Newsletter Signup Form */
+#newsletter {
+  max-width: 600px;
+  margin: 3rem auto;
+  text-align: center;
+}
+#newsletter h2 {
+  margin-bottom: 1rem;
+  color: var(--accent-pink);
+  text-shadow: 0 0 6px var(--accent-pink), 0 0 12px var(--accent-blue);
+}
+.newsletter-input {
+  width: 70%;
+  max-width: 320px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+.newsletter-input:focus {
+  outline: 2px solid var(--accent-blue);
+}
+.newsletter-confirmation {
+  margin-top: 1rem;
+  color: var(--accent-blue);
+}
+
+/* Patreon Support Section */
+#support {
+  max-width: 500px;
+  margin: 3rem auto;
+  text-align: center;
+}
+#support h2 {
+  margin-bottom: 1rem;
+  color: var(--accent-pink);
+  text-shadow: 0 0 6px var(--accent-pink), 0 0 12px var(--accent-blue);
+}
+#support img {
+  max-width: 200px;
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease;
+}
+#support img:hover {
+  transform: scale(1.05);
+}
+#support p {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
 }
