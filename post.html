@@ -41,6 +41,8 @@
     </div>
   </footer>
 
+  <button id="back-to-top" class="back-to-top" hidden aria-label="Back to top">↑</button>
+
   <script>
     const container = document.getElementById('post-container');
     const params = new URLSearchParams(window.location.search);
@@ -60,7 +62,7 @@
           }
 
           container.innerHTML = `
-            <img src="${post["Image URL"]}" alt="${post.Title}" class="blog-hero" />
+            <img src="${post['image 1']}" alt="${post.Title}" class="blog-hero" loading="lazy"/>
             <div class="blog-content">
               <h2>${post.Title}</h2>
               <div class="section-underline"></div>
@@ -68,8 +70,8 @@
               <p>${post.Summary}</p>
               ${post.FullReview ? `<p>${post.FullReview}</p>` : ''}
             </div>
-            ${post.Image2 ? `<img src="${post.Image2}" class="blog-image" loading="lazy"/>` : ''}
-            ${post.Image3 ? `<img src="${post.Image3}" class="blog-image" loading="lazy"/>` : ''}
+            ${post['image 2'] ? `<img src="${post['image 2']}" class="blog-image" loading="lazy"/>` : ''}
+            ${post['image 3'] ? `<img src="${post['image 3']}" class="blog-image" loading="lazy"/>` : ''}
             <a href="eat.html" class="back-link">← Back to Eat Page</a>
           `;
         })
