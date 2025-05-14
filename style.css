@@ -300,6 +300,7 @@ body.light-mode .theme-toggle {
   background: var(--accent-blue);
   box-shadow: 0 0 10px var(--accent-pink);
 }
+
 /* Light-mode header/nav overrides */
 body.light-mode .site-header {
   background-color: rgba(255, 255, 255, 0.85);
@@ -330,6 +331,23 @@ body.light-mode .theme-toggle {
   .hero-cards { grid-template-columns: 1fr; padding: 1rem; }
   .hero-card, .blog-card { width: 100%; }
   .site-header h1 { font-size: 1.75rem; }
+  .section-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  #blog-search,
+  .category-filters {
+    width: 100%;
+  }
+  .category-filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .filter-btn {
+    flex: 1 1 auto;
+    margin: 0.25rem 0;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 991px) {
@@ -343,12 +361,14 @@ body.light-mode .theme-toggle {
   .hero-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Site-wide extras */
+
 /* Video filter buttons */
 .video-filters {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 1rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .filter-btn {
@@ -481,7 +501,8 @@ body.light-mode .theme-toggle {
   margin-top: 0.5rem;
 }
 
-# Sticky mini-player
+. 
+/* Sticky mini-player */
 .responsive-video.mini-player {
   position: fixed;
   bottom: 1rem;

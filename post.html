@@ -16,12 +16,15 @@
     <div class="site-title">
       <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
     </div>
-    <nav>
+    <nav aria-label="Main site navigation">
       <a href="index.html">Home</a>
       <a href="eat.html">Let’s Go To Eat</a>
       <a href="watch.html">Watch</a>
+      <a href="about.html">About</a>
     </nav>
     <button id="theme-toggle" class="theme-toggle">🌙 Light Mode</button>
+    <button id="login-btn" class="btn-outline">Log In</button>
+    <button id="logout-btn" class="btn-outline" hidden>Log Out</button>
   </header>
 
   <main class="glass-section hero-intro">
@@ -60,17 +63,27 @@
             <img src="${post["Image URL"]}" alt="${post.Title}" class="blog-hero" />
             <div class="blog-content">
               <h2>${post.Title}</h2>
+              <div class="section-underline"></div>
               <p><strong>Rating:</strong> ${post.Rating}</p>
               <p>${post.Summary}</p>
-              <p style="opacity: 0.6;">(Full post content can go here if extended writing is included in your sheet later.)</p>
-              <a href="eat.html" class="back-link">← Back to Eat Page</a>
+              ${post.FullReview ? `<p>${post.FullReview}</p>` : ''}
             </div>
+            ${post.Image2 ? `<img src="${post.Image2}" class="blog-image" loading="lazy"/>` : ''}
+            ${post.Image3 ? `<img src="${post.Image3}" class="blog-image" loading="lazy"/>` : ''}
+            <a href="eat.html" class="back-link">← Back to Eat Page</a>
           `;
         })
         .catch(err => {
           console.error(err);
           container.innerHTML = "<p class='loading'>Something went wrong loading this post.</p>";
         });
+    }
+
+    // Back-to-Top for post page
+    const backBtn = document.getElementById('back-to-top');
+    if (backBtn) {
+      window.addEventListener('scroll', () => backBtn.hidden = window.scrollY < window.innerHeight);
+      backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
   </script>
   <script>
@@ -89,5 +102,6 @@
       localStorage.setItem('theme', mode);
     });
   </script>
+  <button id="back-to-top" class="back-to-top" hidden aria-label="Back to top">↑</button>
 </body>
 </html>
