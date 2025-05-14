@@ -62,13 +62,13 @@
           }
 
           container.innerHTML = `
-            <img src="${post['image 1']}" alt="${post.Title}" class="blog-hero" loading="lazy"/>
+            <img src="${post['image 1']}" alt="${post['Title']}" class="blog-hero" loading="lazy"/>
             <div class="blog-content">
-              <h2>${post.Title}</h2>
+              <h2>${post['Title']}</h2>
               <div class="section-underline"></div>
-              <p><strong>Rating:</strong> ${post.Rating}</p>
-              <p>${post.Summary}</p>
-              ${post.FullReview ? `<p>${post.FullReview}</p>` : ''}
+              <p><strong>Rating:</strong> ${post['Rating']}</p>
+              <p>${post['Summary']}</p>
+              ${post['FullReview'] ? `<p>${post['FullReview']}</p>` : ''}
             </div>
             ${post['image 2'] ? `<img src="${post['image 2']}" class="blog-image" loading="lazy"/>` : ''}
             ${post['image 3'] ? `<img src="${post['image 3']}" class="blog-image" loading="lazy"/>` : ''}
@@ -104,6 +104,5 @@
       localStorage.setItem('theme', mode);
     });
   </script>
-  <button id="back-to-top" class="back-to-top" hidden aria-label="Back to top">↑</button>
 </body>
 </html>
