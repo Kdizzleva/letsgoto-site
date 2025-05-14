@@ -62,18 +62,26 @@
           }
 
           container.innerHTML = `
-            <img src="${post['Image 1']}" alt="${post['Title']}" class="blog-hero" loading="lazy"/>
-            <div class="blog-content">
-              <h2>${post['Title']}</h2>
-              <div class="section-underline"></div>
-              <p><strong>Rating:</strong> ${post['Rating']}</p>
-              <p>${post['Summary']}</p>
-              ${post['FullReview'] ? `<p>${post['FullReview']}</p>` : ''}
-            </div>
-            ${post['Image 2'] ? `<img src="${post['image 2']}" class="blog-image" loading="lazy"/>` : ''}
-            ${post['Image 3'] ? `<img src="${post['image 3']}" class="blog-image" loading="lazy"/>` : ''}
-            <a href="eat.html" class="back-link">← Back to Eat Page</a>
-          `;
+  <img
+    src="${post['Image 1'] || ''}"
+    alt="${post.Title}"
+    class="blog-hero"
+    loading="lazy"
+  />
+
+  <div class="blog-content">
+    <h2>${post.Title}</h2>
+    <div class="section-underline"></div>
+    <p><strong>Rating:</strong> ${post.rating || 'N/A'}</p>
+    <p>${post.Summary || ''}</p>
+    ${post.fullreview ? `<p>${post.fullreview}</p>` : ''}
+  </div>
+
+  ${post['Image 2'] ? `<img src="${post['Image 2']}" class="blog-image" loading="lazy"/>` : ''}
+  ${post['Image 3'] ? `<img src="${post['Image 3']}" class="blog-image" loading="lazy"/>` : ''}
+
+  <a href="eat.html" class="back-link">← Back to Eat Page</a>
+`;
         })
         .catch(err => {
           console.error(err);

@@ -501,7 +501,7 @@ body.light-mode .theme-toggle {
   margin-top: 0.5rem;
 }
 
-. 
+ 
 /* Sticky mini-player */
 .responsive-video.mini-player {
   position: fixed;
@@ -515,4 +515,43 @@ body.light-mode .theme-toggle {
 .responsive-video.mini-player iframe {
   width: 100%;
   height: 100%;
+}
+
+/* === Post-page styling tweaks === */
+
+.blog-hero {
+  display: block;
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--accent-blue);
+}
+
+.blog-content {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  background: rgba(10, 10, 10, 0.85);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+}
+
+.back-link {
+  display: block;
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
 }
