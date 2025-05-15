@@ -33,15 +33,18 @@
     </div>
   </main>
 
+  <button id="back-to-top" class="back-to-top" hidden aria-label="Back to top">↑</button>
+
   <footer>
     <p>© 2025 Let's Go To...</p>
     <div class="socials">
-      <a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a class="instagram-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube">YouTube</a>
+      <a class="instagram-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">Instagram</a>
+      <a class="twitter-link" href="https://twitter.com/lg2yt" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">Twitter</a>
+      <a class="facebook-link" href="https://www.facebook.com/letsgoto.yt" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">Facebook</a>
+      <a class="tiktok-link" href="https://www.tiktok.com/@lg2yt" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok">TikTok</a>
     </div>
   </footer>
-
-  <button id="back-to-top" class="back-to-top" hidden aria-label="Back to top">↑</button>
 
   <script>
     const container = document.getElementById('post-container');
@@ -62,26 +65,26 @@
           }
 
           container.innerHTML = `
-  <img
-    src="${post['Image 1'] || ''}"
-    alt="${post.Title}"
-    class="blog-hero"
-    loading="lazy"
-  />
+            <img
+              src="${post['Image 1']}"
+              alt="${post.Title}"
+              class="blog-hero"
+              loading="lazy"
+            />
 
-  <div class="blog-content">
-    <h2>${post.Title}</h2>
-    <div class="section-underline"></div>
-    <p><strong>Rating:</strong> ${post.rating || 'N/A'}</p>
-    <p>${post.Summary || ''}</p>
-    ${post.fullreview ? `<p>${post.fullreview}</p>` : ''}
-  </div>
+            <div class="blog-content">
+              <h2>${post.Title}</h2>
+              <div class="section-underline"></div>
+              <p><strong>Rating:</strong> ${post['Rating']}</p>
+              <p>${post.Summary}</p>
+              ${post.fullreview ? `<p>${post.fullreview}</p>` : ''}
+            </div>
 
-  ${post['Image 2'] ? `<img src="${post['Image 2']}" class="blog-image" loading="lazy"/>` : ''}
-  ${post['Image 3'] ? `<img src="${post['Image 3']}" class="blog-image" loading="lazy"/>` : ''}
+            ${post['image 2'] ? `<img src="${post['image 2']}" class="blog-image" loading="lazy"/>` : ''}
+            ${post['image 3'] ? `<img src="${post['image 3']}" class="blog-image" loading="lazy"/>` : ''}
 
-  <a href="eat.html" class="back-link">← Back to Eat Page</a>
-`;
+            <a href="eat.html" class="back-link">← Back to Eat Page</a>
+          `;
         })
         .catch(err => {
           console.error(err);
@@ -89,14 +92,7 @@
         });
     }
 
-    // Back-to-Top for post page
-    const backBtn = document.getElementById('back-to-top');
-    if (backBtn) {
-      window.addEventListener('scroll', () => backBtn.hidden = window.scrollY < window.innerHeight);
-      backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    }
-  </script>
-  <script>
+    // Theme toggle for post page
     const toggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
 
@@ -106,10 +102,9 @@
     }
 
     toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
-      toggleBtn.textContent = mode === 'light' ? '🌑 Dark Mode' : '🌙 Light Mode';
-      localStorage.setItem('theme', mode);
+      const isLight = body.classList.toggle('light-mode');
+      toggleBtn.textContent = isLight ? '🌑 Dark Mode' : '🌙 Light Mode';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
   </script>
 </body>
