@@ -50,6 +50,7 @@
     const container = document.getElementById('post-container');
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
+    const post = null;
 
     if (!id) {
       container.innerHTML = "<p class='loading'>Post ID not found.</p>";
@@ -57,7 +58,7 @@
       fetch("https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a")
         .then(res => res.json())
         .then(posts => {
-          const post = posts.find(p => p.Title.trim().toLowerCase() === decodeURIComponent(id).trim().toLowerCase());
+          const post = posts.find(p => p.UUID === id);
 
           if (!post) {
             container.innerHTML = "<p class='loading'>Post not found.</p>";
