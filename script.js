@@ -132,20 +132,81 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // === Cursor & Gyroscope ===
-  if (blobs.length) {
-    document.addEventListener('mousemove', e => {
-      blobs[0].style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(0,255,255,0.1), transparent)`;
-    });
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', evt => {
-        blobs.forEach((b,i) => {
-          const x = evt.gamma || 0;
-          b.style.transform = `translate(${x*(i+1)/50}px,0)`;
-        });
-      });
+  // === Dynamic Blob Background & Mouse Parallax ===
+  (function initBlobs() {
+    const colors = ['var(--accent-pink)', 'var(--accent-blue)', 'var(--accent-yellow)'];
+    const numBlobs = 8;
+    const blobsArr = [];
+    for (let i = 0; i < numBlobs; i++) {
+      const b = document.createElement('div');
+      b.classList.add('blob');
+      const size = Math.random() * 200 + 100;
+      b.style.width = b.style.height = `${size}px`;
+      const color = colors[i % colors.length];
+      b.style.background = color;
+      b.dataset.baseColor = color;
+      const tl = Math.random()*50+25, tr = Math.random()*50+25;
+      const br = Math.random()*50+25, bl = Math.random()*50+25;
+      b.style.borderRadius = `${tl}% ${tr}% ${br}% ${bl}% / ${bl}% ${br}% ${tr}% ${tl}%`;
+      b.x = Math.random() * (window.innerWidth - size);
+      b.y = Math.random() * (window.innerHeight - size);
+      b.vx = (Math.random() * 2 - 1) * 0.5;
+      b.vy = (Math.random() * 2 - 1) * 0.5;
+      b.style.transform = `translate(${b.x}px,${b.y}px)`;
+      document.body.appendChild(b);
+      blobsArr.push(b);
     }
-  }
+
+    let ticking = false;
+    document.addEventListener('mousemove', e => {
+      if (ticking) return;
+      window.requestAnimationFrame(() => {
+        blobsArr.forEach((b, i) => {
+          b.x += b.vx; b.y += b.vy;
+          const w = b.clientWidth, h = b.clientHeight;
+          if (b.x < -w) b.x = window.innerWidth;
+          if (b.x > window.innerWidth) b.x = -w;
+          if (b.y < -h) b.y = window.innerHeight;
+          if (b.y > window.innerHeight) b.y = -h;
+          const speed = 0.0008 + i * 0.0001;
+          const dx = (e.clientX - window.innerWidth/2) * speed;
+          const dy = (e.clientY - window.innerHeight/2) * speed;
+          b.style.transform = `translate(${b.x + dx}px,${b.y + dy}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    });
+
+    // continuous drift loop
+    (function drift() {
+      blobsArr.forEach(b => {
+        b.x += b.vx; b.y += b.vy;
+        b.style.transform = `translate(${b.x}px,${b.y}px)`;
+        b.style.background = b.dataset.baseColor;
+      });
+      requestAnimationFrame(drift);
+    })();
+  })();
+
+  // === CTA Ripple Effect ===
+  (function initRipple() {
+    const cta = document.querySelector('.hero-cta');
+    if (!cta) return;
+    cta.style.position = 'relative';
+    cta.style.overflow = 'hidden';
+    cta.addEventListener('click', e => {
+      const circle = document.createElement('span');
+      circle.classList.add('ripple');
+      const d = Math.max(cta.clientWidth, cta.clientHeight);
+      circle.style.width = circle.style.height = `${d}px`;
+      const rect = cta.getBoundingClientRect();
+      circle.style.left = `${e.clientX - rect.left - d/2}px`;
+      circle.style.top = `${e.clientY - rect.top - d/2}px`;
+      cta.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    });
+  })();
 
   // === Blog Loading Function ===
   async function loadBlogPosts() {
