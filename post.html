@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let’s Go To: Blog Post</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-title">
+      <h1><span>Let's</span> <span>Go</span> <span>To...</span></h1>
+    </div>
+    <nav aria-label="Main site navigation">
+      <a href="index.html">Home</a>
+      <a href="eat.html">Let’s Go To Eat</a>
+      <a href="watch.html">Watch</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle">🌙 Light Mode</button>
+    <button id="login-btn" class="btn-outline">Log In</button>
+    <button id="logout-btn" class="btn-outline" hidden>Log Out</button>
+  </header>
+
+  <main class="glass-section hero-intro">
+    <img
+      src="images/kevin-michael-outline.png"
+      alt=""
+      aria-hidden="true"
+      class="hero-silhouette"
+    />
+    <h2 class="post-title"></h2>
+    <div id="post-container">
+      <p class="loading">Loading post...</p>
+    </div>
+  </main>
+
+  <button id="back-to-top" class="back-to-top" hidden aria-label="Back to top">↑</button>
+
+  <footer>
+    <p>© 2025 Let's Go To...</p>
+    <div class="socials">
+      <a class="youtube-link" href="https://www.youtube.com/@LG2YT" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube">YouTube</a>
+      <a class="instagram-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">Instagram</a>
+      <a class="twitter-link" href="https://twitter.com/lg2yt" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">Twitter</a>
+      <a class="facebook-link" href="https://www.facebook.com/letsgoto.yt" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">Facebook</a>
+      <a class="tiktok-link" href="https://www.tiktok.com/@lg2yt" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok">TikTok</a>
+    </div>
+  </footer>
+
+  <script>
+    const container = document.getElementById('post-container');
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const post = null;
+
+    if (!id) {
+      container.innerHTML = "<p class='loading'>Post ID not found.</p>";
+    } else {
+      fetch("https://api.sheetbest.com/sheets/c67498d8-b750-4fe0-bebd-6756e85c469a")
+        .then(res => res.json())
+        .then(posts => {
+          const post = posts.find(p => p.UUID === id);
+
+          // Build animated title spans
+          const titleEl = document.querySelector('.post-title');
+          const words = post.Title.split(' ');
+          titleEl.innerHTML = words
+            .map((w,i) => `<span class="word word-${i+1}">${w}</span>`)
+            .join(' ');
+
+          if (!post) {
+            container.innerHTML = "<p class='loading'>Post not found.</p>";
+            return;
+          }
+
+          container.innerHTML = `
+            <img
+              src="${post['Image 1']}"
+              alt="${post.Title}"
+              class="blog-hero"
+              loading="lazy"
+            />
+
+            <div class="blog-content">
+              <h2>${post.Title}</h2>
+              <div class="section-underline"></div>
+              <p><strong>Rating:</strong> ${post['Rating']}</p>
+              <p>${post.Summary}</p>
+              ${post.fullreview ? `<p>${post.fullreview}</p>` : ''}
+            </div>
+
+            ${post['image 2'] ? `<img src="${post['image 2']}" class="blog-image" loading="lazy"/>` : ''}
+            ${post['image 3'] ? `<img src="${post['image 3']}" class="blog-image" loading="lazy"/>` : ''}
+
+            <a href="eat.html" class="back-link">← Back to Eat Page</a>
+          `;
+        })
+        .catch(err => {
+          console.error(err);
+          container.innerHTML = "<p class='loading'>Something went wrong loading this post.</p>";
+        });
+    }
+
+    // Theme toggle for post page
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      toggleBtn.textContent = '🌑 Dark Mode';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isLight = body.classList.toggle('light-mode');
+      toggleBtn.textContent = isLight ? '🌑 Dark Mode' : '🌙 Light Mode';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+</script>
+<script src="script.js"></script>
+</body>
+</html>
