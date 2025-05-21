@@ -59,36 +59,40 @@
       </form>
     </section>
 
-    <div class="hero-cards-wrapper">
-      <section class="hero-cards">
-        <div class="hero-card video-card glass-section">
-          <h3>🎬 Most Recent Video</h3>
-          <div class="responsive-video">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBrAUdF1LtZenJK52U-ZOF8J" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section id="media" class="media-section">
+      <div class="media-column">
+        <h3>🎬 Latest Videos</h3>
+        <div class="media-cards video-cards">
+          <div class="media-card video-card">
+            <div class="responsive-video">
+              <iframe src="https://www.youtube.com/embed/_MTLGQ2wMv4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <a href="watch.html" class="card-btn">Watch More</a>
           </div>
-          <a href="watch.html" class="btn-primary">Watch More</a>
-        </div>
-        <div class="hero-card blog-card glass-section">
-          <h3>🍔 Latest Blog</h3>
-          <img src="images/epic-nacho-mountain.jpg" alt="Epic Nacho Mountain" class="blog-image" loading="lazy" />
-          <p><strong>Latest Dish Reviewed:</strong> Epic Nacho Mountain — Virginia’s crunchiest tower of queso!</p>
-          <a href="post.html?id=Epic%20Nacho%20Mountain" class="btn-outline">Read More</a>
-        </div>
-        <div class="hero-card blog-card glass-section">
-          <h3>⭐️ 5-Star Pick</h3>
-          <img src="images/top-rated-spot.jpg" alt="Top Rated Blog" class="blog-image" loading="lazy" />
-          <p><strong>Kevin’s Favorite:</strong> Tokyo Turkey Legs — the juiciest thing outside EPCOT. 5/5!</p>
-          <a href="post.html?id=Tokyo%20Turkey%20Legs" class="btn-outline">Read More</a>
-        </div>
-        <div class="hero-card video-card glass-section">
-          <h3>🎢 Theme Park Playlist</h3>
-          <div class="responsive-video">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="media-card video-card">
+            <div class="responsive-video">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <a href="watch.html" class="card-btn">Watch More</a>
           </div>
-          <a href="https://www.youtube.com/playlist?list=PLWfe8qw6shBq7g78HvZwv3VkYzS1CL5Md" class="btn-outline" target="_blank">Watch the Playlist</a>
         </div>
-      </section>
-    </div>
+      </div>
+      <div class="media-column">
+        <h3>📖 Latest Blogs</h3>
+        <div class="media-cards blog-cards">
+          <div class="media-card blog-card">
+            <img src="images/epic-nacho-mountain.jpg" alt="Epic Nacho Mountain" class="card-thumb"/>
+            <p>Epic Nacho Mountain — Virginia’s crunchiest tower of queso!</p>
+            <a href="post.html?id=Epic%20Nacho%20Mountain" class="card-btn">Read More</a>
+          </div>
+          <div class="media-card blog-card">
+            <img src="images/top-rated-spot.jpg" alt="Top Rated Blog" class="card-thumb"/>
+            <p>Tokyo Turkey Legs — the juiciest thing outside EPCOT. 5/5!</p>
+            <a href="post.html?id=Tokyo%20Turkey%20Legs" class="card-btn">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="modals">
