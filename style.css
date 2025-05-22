@@ -1,3 +1,22 @@
+/* === Dynamic Blobs === */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+  filter: blur(30px);
+  mix-blend-mode: screen;
+  z-index: -1;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 :root {
   --bg-color: #0a0a0a;
   --text-color: #ffffff;
@@ -413,7 +432,7 @@ body.light-mode .theme-toggle {
   margin-top: 0.5rem;
 }
 
- 
+
 /* Sticky mini-player */
 .responsive-video.mini-player {
   position: fixed;
@@ -559,6 +578,7 @@ body.light-mode .theme-toggle {
     fadeInUp 1s ease-out both,
     breathing 10s ease-in-out infinite;
   overflow: hidden;
+  z-index: 5;
 }
 
 /* Hero hover tilt */
