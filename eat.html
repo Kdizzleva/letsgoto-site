@@ -1,66 +1,24 @@
-/* === Eat Page: Skeleton placeholders === */
-.skeleton-card {
-  background: var(--glass);
-  border-radius: 12px;
-  height: 180px;
-  position: relative;
-  overflow: hidden;
-}
-.skeleton-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.02) 25%,
-    rgba(255,255,255,0.1) 50%,
-    rgba(255,255,255,0.02) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Underline styling for hero and section titles */
-.section-underline {
-  width: 4rem;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue));
-  margin: 0.5rem auto 1.5rem;
-  border-radius: 2px;
-}
-
-/* Controls bar for Eat page */
-.section-controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-#blog-search {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: none;
-  width: 60%;
-  max-width: 300px;
-  background: var(--glass);
-  color: var(--text-color);
-}
-.category-filters .filter-btn {
-  background: var(--glass);
-  border: 2px solid var(--accent-blue);
-  color: var(--accent-blue);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background 0.3s, color 0.3s;
-}
-.category-filters .filter-btn.active,
-.category-filters .filter-btn:hover {
-  background: var(--accent-blue);
-  color: #111;
-}
+<main class="glass-section hero-intro" aria-label="Hero section: Let’s Go To Eat">
+  <img
+    src="images/kevin-michael-outline.png"
+    alt=""
+    aria-hidden="true"
+    class="hero-silhouette"
+  />
+  <h2>
+    <span class="word word-1">Let’s</span>
+    <span class="word word-2">Go</span>
+    <span class="word word-3">To</span>
+    <span class="word word-4">Eat</span>
+  </h2>
+  <p class="hero-guides">
+    Your guides Kevin & Michael share top eats across Virginia, theme parks, and beyond!
+  </p>
+  <a href="#" class="hero-cta">Explore Latest Review</a>
+  <div class="scroll-down"></div>
+</main>
+<section id="blog-container" class="glass-section">
+  <!-- blog posts will be injected here -->
+</section>
+  <!-- global interactive behaviors: blobs, hero tilt/fade, blog loader -->
+  <script src="script.js"></script>
