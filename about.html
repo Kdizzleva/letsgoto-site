@@ -1,78 +1,59 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Hungry for midnight tacos under neon skies? Join Kevin & Michael on Let's Go To… for food, fun, and theme-park thrills!" />
-
-  <!-- OpenGraph Meta -->
-  <meta property="og:title"   content="Let's Go To…" />
+  <meta property="og:title" content="Let's Go To..." />
   <meta property="og:description" content="Hungry for midnight tacos under neon skies? Join the adventure!" />
-  <meta property="og:image"   content="https://lg2yt.com/images/og-image.jpg" />
+  <meta property="og:image" content="images/og-image.jpg" />
 
   <!-- AOS (Animate On Scroll) CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
-  <title>Let’s Go To…</title>
-
-  <!-- Our Main Stylesheet -->
+  <title>Let's Go To…</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Orbitron Font -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Auth0 SPA SDK (for Log In / Log Out) -->
+  <!-- Auth0 SPA SDK (for login/logout) -->
   <script src="https://cdn.auth0.com/js/auth0-spa-js/1.29/auth0-spa-js.production.js"></script>
 </head>
 <body>
-  <!-- ============================
-       Header & Navigation
-       ============================ -->
+  <!-- Blurred Color “Blobs” -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <!-- Header / Navigation -->
   <header class="site-header">
-    <!-- Logo / Home Link -->
-    <h1>
-      <a href="index.html" class="logo-link">Let’s Go To…</a>
-    </h1>
-
-    <!-- Mobile Menu Toggle (☰) -->
-    <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
-
-    <!-- Site Navigation -->
-    <nav class="site-nav" role="navigation" aria-label="Main site navigation">
+    <h1><a href="index.html" class="logo-link">Let's Go To…</a></h1>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="site-nav" role="navigation">
       <a href="index.html" class="active">Home</a>
       <a href="eat.html">Eat</a>
       <a href="watch.html">Watch</a>
       <a href="about.html">About</a>
       <button id="login-btn" class="btn-outline">Log In</button>
       <button id="logout-btn" class="btn-outline" hidden>Log Out</button>
-      <button class="theme-toggle">🌙 Light Mode</button>
+      <button class="btn-outline theme-toggle">🌙 Light Mode</button>
     </nav>
   </header>
 
-  <!-- ============================
-       Dynamic Blobs (Injected by script.js)
-       ============================ -->
-
-  <!-- ============================
-       Hero Section
-       ============================ -->
-  <section class="hero-intro" data-animate="fadeInUp" aria-label="Hero section: Welcome">
+  <!-- HERO SECTION -->
+  <section class="hero-intro" data-aos="fade-up">
     <h2>
-      Hungry for midnight tacos<br />
+      Hungry for midnight tacos<br/>
       under neon skies?
     </h2>
     <p>Your guides Kevin & Michael share midnight snacks, theme-park eats, and beyond.</p>
-    <a href="eat.html" class="hero-cta">Explore Latest Video</a>
+    <a href="watch.html" class="hero-cta" role="button">Explore Latest Video</a>
   </section>
 
-  <!-- ============================
-       Media Section (3‐Column Grid)
-       ============================ -->
+  <!-- MEDIA SECTION (Latest Video + Latest Dish + Top Pick) -->
   <section class="media-section">
-    <!-- Column 1: Most Recent Video -->
+    <!-- Most Recent Video (Featured) -->
     <div class="media-column" data-aos="fade-up" data-aos-delay="100">
-      <h3>🎬 Most Recent Video</h3>
+      <h3>🎬 Most Recent Video <span class="badge">Featured</span></h3>
       <div class="responsive-video">
         <iframe
           src="https://www.youtube.com/embed/videoseries?list=PLWfe8qw6shBpzM09beblI0sSjTrgX-Uwk"
@@ -81,10 +62,9 @@
           loading="lazy">
         </iframe>
       </div>
-      <div class="badge">Featured</div>
     </div>
 
-    <!-- Column 2: Latest Dish -->
+    <!-- Latest Dish Card -->
     <div class="media-column" data-aos="fade-up" data-aos-delay="200">
       <h3>🍔 Latest Dish</h3>
       <div class="media-cards blog-cards">
@@ -93,15 +73,14 @@
             src="images/epic-nacho-mountain.jpg"
             alt="Epic Nacho Mountain"
             class="card-thumb"
-            loading="lazy"
-          />
+            loading="lazy" />
           <p>Virginia’s crunchiest tower of queso!</p>
           <a href="post.html?id=Epic%20Nacho%20Mountain" class="card-btn">Read More</a>
         </div>
       </div>
     </div>
 
-    <!-- Column 3: Top Pick -->
+    <!-- Top Pick Card -->
     <div class="media-column" data-aos="fade-up" data-aos-delay="300">
       <h3>⭐ Top Pick</h3>
       <div class="media-cards blog-cards">
@@ -110,8 +89,7 @@
             src="images/top-rated-spot.jpg"
             alt="Tokyo Turkey Legs"
             class="card-thumb"
-            loading="lazy"
-          />
+            loading="lazy" />
           <p>Tokyo Turkey Legs — the juiciest thing outside EPCOT. 5/5!</p>
           <a href="post.html?id=Tokyo%20Turkey%20Legs" class="card-btn">Read More</a>
         </div>
@@ -119,49 +97,31 @@
     </div>
   </section>
 
-  <!-- ============================
-       Newsletter Teaser
-       ============================ -->
-  <section
-    id="newsletter-teaser"
-    class="glass-section"
-    data-aos="fade-up"
-    data-aos-delay="400"
-    aria-label="Newsletter teaser"
-  >
+  <!-- NEWSLETTER TEASER -->
+  <section id="newsletter-teaser" class="glass-section" data-aos="fade-up" data-aos-delay="400">
     <h3>Join Our Newsletter</h3>
     <p>Get exclusive updates, recipes, and behind-the-scenes stories.</p>
     <a href="#newsletter-modal" class="hero-cta">Subscribe Now</a>
   </section>
 
-  <!-- ============================
-       Footer / Socials
-       ============================ -->
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 Let's Go To…</p>
     <div class="socials">
-      <a href="https://youtube.com/@LG2YT"    target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="https://instagram.com/letsgoto.yt" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://twitter.com/lg2yt"     target="_blank" rel="noopener noreferrer">Twitter</a>
-      <a href="https://facebook.com/letsgoto.yt" target="_blank" rel="noopener noreferrer">Facebook</a>
-      <a href="https://tiktok.com/@lg2yt"     target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://youtube.com/@LG2YT" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://instagram.com/letsgoto.yt" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com/lg2yt" target="_blank" rel="noopener">Twitter</a>
+      <a href="https://facebook.com/letsgoto.yt" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://tiktok.com/@lg2yt" target="_blank" rel="noopener">TikTok</a>
     </div>
   </footer>
 
-  <!-- ============================
-       AOS (Animate On Scroll) JS Init
-       ============================ -->
+  <!-- AOS (Animate On Scroll) JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      once: true,
-      duration: 800
-    });
+    AOS.init({ once: true, duration: 800 });
   </script>
-
-  <!-- ============================
-       Our Global Script (deferred)
-       ============================ -->
+  <!-- Main JavaScript (blobs, menu toggle, Auth0, theme toggle, etc.) -->
   <script defer src="script.js"></script>
 </body>
 </html>
